@@ -1,0 +1,9 @@
+#!/usr/bin/env php
+<?php
+$root = dirname(__FILE__);
+$config_file = "$root/.config";
+$configs = parse_ini_file($config_file);
+
+echo "$root/build -1.2compat > {$configs['export']} \n";
+exec("$root/build -1.2compat > {$configs['export']}");
+?>

@@ -1,0 +1,11 @@
+# OS generated files
+.DS_Store?
+ehthumbs.db
+Icon?
+Thumbs.db
+
+# Agavi
+app/cache/*
+app/log/*
+!app/cache/.gitignore
+!app/log/.gitignore

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ae:configurations xmlns:ae="http://agavi.org/agavi/config/global/envelope/1.0" xmlns="http://agavi.org/agavi/config/parts/output_types/1.0">
+	
+	<ae:configuration>
+		
+		<output_types default="html">
+			
+			<output_type name="html">
+				
+				<renderers default="php">
+					<renderer name="php" class="AgaviPhpRenderer">
+						<ae:parameter name="assigns">
+							<ae:parameter name="routing">routing</ae:parameter>
+							<ae:parameter name="request">request</ae:parameter>
+							<ae:parameter name="controller">controller</ae:parameter>
+							<ae:parameter name="user">user</ae:parameter>
+							<ae:parameter name="translation_manager">translationManager</ae:parameter>
+							<ae:parameter name="request_data">requestData</ae:parameter>
+						</ae:parameter>
+						<ae:parameter name="default_extension">.php</ae:parameter>
+						<ae:parameter name="var_name">t</ae:parameter>
+					</renderer>
+				</renderers>
+				
+				<layouts default="standard">
+															
+					<!-- standard -->
+					<layout name="standard">
+						<layer name="content" />
+						<layer name="decorator">
+							<ae:parameter name="directory">%core.template_dir%</ae:parameter>
+							<ae:parameter name="template">Master</ae:parameter>
+						</layer>
+					</layout>
+					
+					<!-- simple -->			
+					<layout name="simple">
+						<layer name="content" />
+					</layout>
+					
+					<!-- slot -->
+					<layout name="slot">
+						<layer name="content" />
+					</layout>
+					
+				</layouts>
+				
+				<ae:parameter name="http_headers">
+					<ae:parameter name="Content-Type">text/html; charset=UTF-8</ae:parameter>
+				</ae:parameter>
+				
+			</output_type>
+			
+		</output_types>
+		
+	</ae:configuration>
+	
+	<ae:configuration environment="production.*">
+		
+		<output_types default="html">
+			
+			<!-- use a different exception template in production envs -->
+			<!-- others are defined in settings.xml -->
+			<output_type name="html" exception_template="%core.template_dir%/exceptions/web-html.php" />
+			
+		</output_types>
+		
+	</ae:configuration>
+	
+</ae:configurations>

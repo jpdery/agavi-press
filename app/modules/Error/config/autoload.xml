@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ae:configurations xmlns="http://agavi.org/agavi/config/parts/autoload/1.0" xmlns:ae="http://agavi.org/agavi/config/global/envelope/1.0">
+	<ae:configuration>
+		
+		<autoload name="AgaviPressErrorBaseAction">%core.module_dir%/Error/lib/action/AgaviPressErrorBaseAction.class.php</autoload>
+		<autoload name="AgaviPressErrorBaseModel">%core.module_dir%/Error/lib/model/AgaviPressErrorBaseModel.class.php</autoload>
+		<autoload name="AgaviPressErrorBaseView">%core.module_dir%/Error/lib/view/AgaviPressErrorBaseView.class.php</autoload>
+		
+	</ae:configuration>
+</ae:configurations>

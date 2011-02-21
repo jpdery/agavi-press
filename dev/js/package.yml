@@ -1,0 +1,16 @@
+name: "Site"
+
+exports: "mootools-site.js"
+
+web: "[mootools.net](http://mootools.net)"
+
+description: "MooTools, The JavaScript framework"
+
+license: "[MIT License](http://mootools.net/license.txt)"
+
+copyright: "[AgaviPress](http://www.agavipress.org)"
+
+authors: "[AgaviPress](http://www.agavipress.org)"
+
+sources:
+  - "Source/Site/Init.js"

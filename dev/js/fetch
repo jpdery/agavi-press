@@ -1,0 +1,45 @@
+#!/bin/bash
+
+MOOTOOLS_CORE="https://github.com/mootools/mootools-core.git"
+MOOTOOLS_MORE="https://github.com/mootools/mootools-more.git"
+MOOTOOLS_EXTRAS="https://github.com/jpdery/mootools-extras.git"
+MOOTOOLS_PACKAGER="https://github.com/kamicane/packager.git"
+
+if [ -d Packages ]; then
+	rm -rf Packages
+fi
+
+if [ -d Packager ]; then
+	rm -rf Packager
+fi
+
+mkdir Packages
+
+#
+# Mootools
+#
+
+cd Packages
+
+echo "Cloning 'mootools-core' from GitHub."
+git clone $MOOTOOLS_CORE
+
+echo "Cloning 'mootools-more' from GitHub."
+git clone $MOOTOOLS_MORE
+
+echo "Cloning 'mootools-extras' from GitHub."
+git clone $MOOTOOLS_EXTRAS
+
+cd ..
+
+#
+# Packager
+#
+
+echo "Cloning 'packager' from GitHub."
+git clone $MOOTOOLS_PACKAGER
+mv packager Packager
+
+cd ..
+
+echo "Done."

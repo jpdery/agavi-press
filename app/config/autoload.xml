@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ae:configurations xmlns="http://agavi.org/agavi/config/parts/autoload/1.0" xmlns:ae="http://agavi.org/agavi/config/global/envelope/1.0" parent="%core.system_config_dir%/autoload.xml">
+	<ae:configuration>
+		
+		<!-- action -->
+		<autoload name="AgaviPressAction">%core.lib_dir%/action/AgaviPressAction.class.php</autoload>
+
+		<!-- config -->
+		<autoload name="AgaviPressConfig">%core.lib_dir%/config/AgaviPressConfig.class.php</autoload>
+
+		<!-- database -->
+		<autoload name="Doctrine2Database">%core.lib_dir%/database/Doctrine2Database.class.php</autoload>
+		<autoload name="Doctrine2Configuration">%core.lib_dir%/database/Doctrine2Configuration.class.php</autoload>
+		<autoload name="Doctrine2ContextEventListener">%core.lib_dir%/database/Doctrine2ContextEventListener.class.php</autoload>
+
+		<!-- debug -->
+		<autoload name="AgaviPressDebug">%core.lib_dir%/debug/AgaviPressDebug.class.php</autoload>
+
+		<!-- doctrine -->
+		<autoload name="Doctrine\Common\ClassLoader">%core.vendor_dir%/doctrine/lib/vendor/doctrine-common/lib/Doctrine/Common/ClassLoader.php</autoload>
+
+		<!-- model -->
+		<autoload name="AgaviPressModel">%core.lib_dir%/model/AgaviPressModel.class.php</autoload>
+		<autoload name="AgaviPressRecordModel">%core.lib_dir%/model/AgaviPressRecordModel.class.php</autoload>
+		<autoload name="AgaviPressManagerModel">%core.lib_dir%/model/AgaviPressManagerModel.class.php</autoload>
+		<autoload name="ConfigManagerModel">%core.model_dir%/Config/ConfigManager.class.php</autoload>
+		<autoload name="AgaviPress\Config">%core.model_dir%/Config/Config.class.php</autoload>
+		
+		<!-- routing -->
+		<autoload name="AgaviPressRouting">%core.lib_dir%/routing/AgaviPressRouting.class.php</autoload>
+		
+		<!-- translation -->
+		<autoload name="AgaviPressTranslationManager">%core.lib_dir%/translation/AgaviPressTranslationManager.class.php</autoload>
+		
+		<!-- user -->
+		<autoload name="AgaviPressUser">%core.lib_dir%/user/AgaviPressUser.class.php</autoload>
+		
+		<!-- view -->
+		<autoload name="AgaviPressView">%core.lib_dir%/view/AgaviPressView.class.php</autoload>
+		
+	</ae:configuration>
+</ae:configurations>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ae:configurations xmlns:ae="http://agavi.org/agavi/config/global/envelope/1.0" xmlns="http://agavi.org/agavi/config/parts/rbac_definitions/1.0">
+	<ae:configuration>
+		<roles>
+			<role name="subscriber">
+				<permissions>
+					<permission>post.read</permission>
+					<permission>page.read</permission>
+				</permissions>
+				<roles>
+					<role name="contributor">
+						<permissions>
+							<permission>page.manage-own-draft</permission>
+							<permission>post.manage-own-draft</permission>
+						</permissions>
+						<roles>
+							<role name="author">
+								<permissions>
+									<permission>page.manage-own</permission>
+									<permission>post.manage-won</permission>
+								</permissions>
+								<roles>
+									<role name="editor">
+										<permissions>
+											<permission>page.manage</permission>
+											<permission>post.manage</permission>
+										</permissions>
+										<role name="administrator">
+											<permissions>
+												<permission>administration.manage</permission>
+											</permissions>
+										</role>
+									</role>
+								</roles>
+							</role>
+						</roles>
+					</role>
+				</roles>
+			</role>
+		</roles>
+	</ae:configuration>
+</ae:configurations>

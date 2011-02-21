@@ -1,0 +1,18 @@
+[submodule "vendor/doctrine"]
+	path = vendor/doctrine
+	url = git://github.com/doctrine/doctrine2.git
+[submodule "vendor/agavi"]
+	path = vendor/agavi
+	url = git://github.com/jpdery/agavi.git
+[submodule "dev/js/Packages/mootools-core"]
+	path = dev/js/Packages/mootools-core
+	url = git://github.com/mootools/mootools-core.git
+[submodule "dev/js/Packages/mootools-more"]
+	path = dev/js/Packages/mootools-more
+	url = git://github.com/mootools/mootools-more.git
+[submodule "dev/js/Packages/mootools-extras"]
+	path = dev/js/Packages/mootools-extras
+	url = git://github.com/jpdery/mootools-extras.git
+[submodule "dev/js/Packager"]
+	path = dev/js/Packager
+	url = https://github.com/kamicane/packager.git

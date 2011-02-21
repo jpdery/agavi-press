@@ -1,0 +1,82 @@
+<?php
+
+// +---------------------------------------------------------------------------+
+// | This file is part of the AgaviPress package.                              |
+// | Copyright (c) 2011-2010 the AgaviPress Project.                           |
+// | Based on Agavi MVC Framework, Copyright (c) 2005-2011 the Agavi Project.  |
+// |                                                                           |
+// | For the full copyright and license information, please view the LICENSE   |
+// | file that was distributed with this source code.                          |
+// |   vi: set noexpandtab:                                                    |
+// |   Local Variables:                                                        |
+// |   indent-tabs-mode: t                                                     |
+// |   End:                                                                    |
+// +---------------------------------------------------------------------------+
+
+/**
+ * The base view from which all project views inherit.
+ *
+ * A view represents the presentation layer of an action. Output can be
+ * customized by supplying attributes, which a template can manipulate and
+ * display.
+ *
+ * @package    agavi-press
+ * @subpackage view
+ *
+ * @author     Jean-Philippe Dery <jeanphilippe.dery@gmail.com>
+ * @copyright  Authors
+ * @copyright  The AgaviPress Project
+ *
+ * @since      0.1.0
+ *
+ * @version    0.1.0
+ */
+class %%PROJECT_PREFIX%%BaseView extends AgaviView
+{
+	const SLOT_LAYOUT_NAME = 'slot';
+	
+	/**
+	 * Handles output types that are not handled elsewhere in the view. The
+	 * default behavior is to simply throw an exception.
+	 *
+	 * @param      AgaviRequestDataHolder The request data associated with
+	 *                                    this execution.
+	 *
+	 * @throws     AgaviViewException if the output type is not handled.
+	 */
+	public final function execute(AgaviRequestDataHolder $rd)
+	{
+		throw new AgaviViewException(sprintf(
+			'The view "%1$s" does not implement an "execute%3$s()" method to serve '.
+			'the output type "%2$s", and the base view "%4$s" does not implement an '.
+			'"execute%3$s()" method to handle this situation.',
+			get_class($this),
+			$this->container->getOutputType()->getName(),
+			ucfirst(strtolower($this->container->getOutputType()->getName())),
+			get_class()
+		));
+	}
+
+	/**
+	 * Prepares the HTML output type.
+	 *
+	 * @param      AgaviRequestDataHolder The request data associated with
+	 *                                    this execution.
+	 * @param      string The layout to load.
+	 */
+	public function setupHtml(AgaviRequestDataHolder $rd, $layoutName = null)
+	{
+		if($layoutName === null && $this->getContainer()->getParameter('is_slot', false)) {
+			// it is a slot, so we do not load the default layout, but a different one
+			// otherwise, we could end up with an infinite loop
+			$layoutName = self::SLOT_LAYOUT_NAME;
+		}
+
+		// now load the layout
+		// this method returns an array containing the parameters that were declared on the layout (not on a layer!) in output_types.xml
+		// you could use this, for instance, to automatically set a bunch of CSS or Javascript includes based on layout parameters -->
+		$this->loadLayout($layoutName);
+	}
+}
+
+?>

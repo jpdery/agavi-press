@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ae:configurations xmlns:ae="http://agavi.org/agavi/config/global/envelope/1.0" xmlns="http://agavi.org/agavi/config/parts/settings/1.0" xmlns:xi="http://www.w3.org/2001/XInclude">
+	<ae:configuration>
+
+		<system_actions>
+
+			<system_action name="default">
+				<module>Default</module>
+				<action>Index</action>
+			</system_action>
+
+			<system_action name="error_404">
+				<module>Error</module>
+				<action>Error404</action>
+			</system_action>
+
+			<system_action name="unavailable">
+				<module>Error</module>
+				<action>Unavailable</action>
+			</system_action>
+
+			<system_action name="module_disabled">
+				<module>Error</module>
+				<action>ModuleDisabled</action>
+			</system_action>
+
+			<system_action name="secure">
+				<module>Error</module>
+				<action>Secure</action>
+			</system_action>
+
+			<system_action name="login">
+				<module>User</module>
+				<action>Login</action>
+			</system_action>
+
+		</system_actions>
+
+		<settings>
+			<setting name="app_name">Agavi-Press</setting>
+
+			<setting name="available">true</setting>
+			<setting name="debug">false</setting>
+
+			<setting name="use_database">true</setting>
+			<setting name="use_logging">false</setting>
+			<setting name="use_security">true</setting>
+			<setting name="use_translation">true</setting>
+		</settings>
+		
+		<!-- agavi-press infos -->
+		<settings prefix="org.agavi-press.">
+			<setting name="version">0.1.0</setting>
+		</settings>
+		
+		<!-- agavi-press config override -->
+		<!--
+		<settings prefix="org.agavi-press.config.">
+			Config defined here will override config in the database. Use with care or
+			override per-environment config only.
+		</settings>
+		-->
+
+		<exception_templates>
+			<exception_template>%core.agavi_dir%/exception/templates/shiny.php</exception_template>
+			<exception_template context="console">%core.agavi_dir%/exception/templates/plaintext.php</exception_template>
+		</exception_templates>
+
+	</ae:configuration>
+
+	<ae:configuration environment="development.*">
+		<settings>
+			<setting name="debug">true</setting>
+		</settings>
+	</ae:configuration>
+
+	<ae:configuration environment="production.*">
+		<exception_templates>
+			<exception_template>%core.template_dir%/exceptions/_default.php</exception_template>
+			<exception_template context="web">%core.template_dir%/exceptions/web.php</exception_template>
+		</exception_templates>
+	</ae:configuration>
+	
+</ae:configurations>

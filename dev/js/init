@@ -1,0 +1,60 @@
+#!/usr/bin/env php
+<?php
+
+$stdin  = fopen('php://stdin', 'r');
+$stderr = fopen('php://stderr', 'w');
+
+$root = dirname(__FILE__);
+
+$configs = array();
+$config_file = "$root/.config";
+	
+if (file_exists($config_file)) {
+	$configs = read_ini();
+}
+
+// Questions
+$configs['export'] = ask('Where do you want to export site.js relative to the current path', $configs['export']);
+write_ini($configs);
+
+// Fetch Question, if answered property the system will fetch all the required packages
+$fetch = ask('Do you want to fetch the latest packages ? (y/n)', 'n');
+if ($fetch == 'y') {
+	exec('./fetch');
+}
+
+//
+// Functions
+//
+
+function ask($question, $default = null) {
+	global $stdin, $strerr;
+	$answer   = '';
+	$answered = false;
+	while ($answered == false) {
+		if ($default)	echo "$question [$default] ?";
+		else			echo "$question ?";
+		$answer = fgets($stdin);
+		$answer = trim($answer);
+		if (strlen($answer) == 0) $answer = $default;
+		if (strlen($answer) >= 1) $answered = true;
+	}
+	return $answer;
+}
+
+function read_ini() {
+	global $config_file;
+	return parse_ini_file($config_file);
+}
+
+function write_ini($data) {
+	global $config_file;
+	$content = "";
+	foreach ($data as $key => $val) { 
+		$content = $content . "$key = $val \n";
+	}	
+	file_put_contents($config_file, $content);
+	chmod($config_file, 0666);
+}
+
+?>
