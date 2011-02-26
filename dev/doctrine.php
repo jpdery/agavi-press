@@ -2,8 +2,9 @@
 
 $args = $_SERVER['argv'];
 
-require('vendor/agavi/agavi.php');
-require('app/config.php');
+
+require(__DIR__ . '/../vendor/agavi/agavi.php');
+require(__DIR__ . '/../app/config.php');
 
 Agavi::bootstrap('development');
 $database = AgaviContext::getInstance('web')->getDatabaseManager()->getDatabase('doctrine');
@@ -11,7 +12,7 @@ $database = AgaviContext::getInstance('web')->getDatabaseManager()->getDatabase(
 $_SERVER['argv'] = $args;
 $classLoader = new \Doctrine\Common\ClassLoader('Symfony', __DIR__ . '/../vendor/doctrine/lib/vendor');
 $classLoader->register();
-	
+
 $helpers = array(
     'db' => new \Doctrine\DBAL\Tools\Console\Helper\ConnectionHelper($database->getEntityManager()->getConnection()),
     'em' => new \Doctrine\ORM\Tools\Console\Helper\EntityManagerHelper($database->getEntityManager())

@@ -6,9 +6,13 @@
 # that was distributed with this source code. You can also view the LICENSE
 # file online at http://www.agavi.org/LICENSE.txt
 
+# Finds the full path of hte current script so it won't matter where
+# agavi is called from
+AGAVI_SCRIPT_PATH=$(cd ${0%/*} && pwd -P)
+
 # Set this to the path to the Agavi installation's source directory. This is
 # the directory that contains the `agavi.php' file.
-AGAVI_SOURCE_DIRECTORY="${PWD}/dev/build/src"
+AGAVI_SOURCE_DIRECTORY="$AGAVI_SCRIPT_PATH/build/src"
 
 # Set this to the path to a PHP binary.
 PHP_EXECUTABLE=$( which php )
