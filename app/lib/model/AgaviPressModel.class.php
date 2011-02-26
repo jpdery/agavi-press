@@ -16,9 +16,9 @@
 /**
  * The model from which all project models inherit.
  *
- * AgaviModel provides a convention for separating business logic from 
+ * AgaviModel provides a convention for separating business logic from
  * application logic. When using a model you're providing a globally accessible
- * API for other modules to access, which will boost interoperability among 
+ * API for other modules to access, which will boost interoperability among
  * modules in your web application.
  *
  * @package    agavi-press
@@ -41,47 +41,47 @@ abstract class AgaviPressModel extends AgaviModel
 	 * @author     Jean-Philippe Dery <jeanphilippe.dery@gmail.com>
 	 */
 	protected $routing = null;
-	
+
 	/**
 	 * @var        AgaviRequest
 	 *
-	 * @since      0.1.0
 	 * @author     Jean-Philippe Dery <jeanphilippe.dery@gmail.com>
+	 * @since      0.1.0
 	 */
 	protected $request = null;
-	
+
 	/**
 	 * @var        AgaviPressTranslationManager
 	 *
-	 * @since      0.1.0
 	 * @author     Jean-Philippe Dery <jeanphilippe.dery@gmail.com>
+	 * @since      0.1.0
 	 */
 	protected $translationManager = null;
-	
+
 	/**
 	 * @var        AgaviUser
 	 *
-	 * @since      0.1.0
 	 * @author     Jean-Philippe Dery <jeanphilippe.dery@gmail.com>
+	 * @since      0.1.0
 	 */
 	protected $user = null;
 
 	/**
 	 * @var        string The default 2 letters code language.
 	 *
-	 * @since      0.1.0
 	 * @author     Jean-Philippe Dery <jeanphilippe.dery@gmail.com>
+	 * @since      0.1.0
 	 */
 	protected $defaultLanguage = '';
-	
+
 	/**
 	 * @var        string The current 2 letters code language.
 	 *
-	 * @since      0.1.0
 	 * @author     Jean-Philippe Dery <jeanphilippe.dery@gmail.com>
+	 * @since      0.1.0
 	 */
 	protected $currentLanguage = '';
-	
+
 	/**
 	 * Initialize this model.
 	 *
@@ -99,12 +99,12 @@ abstract class AgaviPressModel extends AgaviModel
 		$this->routing = $this->context->getRouting();
 		$this->request = $this->context->getRequest();
 		$this->translationManager = $this->context->getTranslationManager();
-		
+
 		// set the default and current language
 		$this->defaultLanguage = $this->translationManager->getDefaultLocale()->getLocaleLanguage();
 		$this->currentLanguage = $this->translationManager->getCurrentLocale()->getLocaleLanguage();
 	}
-	
+
 	/**
 	 * Pre-serialization callback.
 	 *
@@ -140,7 +140,7 @@ abstract class AgaviPressModel extends AgaviModel
 			$this->context = AgaviContext::getInstance($this->_contextName);
 			unset($this->_contextName);
 		}
-	}	
+	}
 }
 
 ?>

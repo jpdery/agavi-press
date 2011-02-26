@@ -36,35 +36,35 @@ class AgaviPressAction extends AgaviAction
 	/**
 	 * @var        AgaviPressRouting
 	 *
+	 * @author     Jean-Philippe Dery <jeanphilippe.dery@gmail.com>
 	 * @since      0.1.0
-	 * @author     Jean-Philippe Dery <jeanphilippe.dery@gmail.com>	 
 	 */
 	protected $routing = null;
-	
+
 	/**
 	 * @var        AgaviRequest
 	 *
-	 * @since      0.1.0
 	 * @author     Jean-Philippe Dery <jeanphilippe.dery@gmail.com>
+	 * @since      0.1.0
 	 */
 	protected $request = null;
-	
+
 	/**
 	 * @var        AgaviPressTranslationManager
 	 *
+	 * @author     Jean-Philippe Dery <jeanphilippe.dery@gmail.com>
 	 * @since      0.1.0
-	 * @author     Jean-Philippe Dery <jeanphilippe.dery@gmail.com>	 
 	 */
 	protected $translationManager = null;
-	
+
 	/**
 	 * @var        AgaviUser
 	 *
-	 * @since      0.1.0
 	 * @author     Jean-Philippe Dery <jeanphilippe.dery@gmail.com>
+	 * @since      0.1.0
 	 */
 	protected $user = null;
-	
+
 	/**
 	 * @var        string The default 2 letters code language.
 	 *
@@ -72,15 +72,15 @@ class AgaviPressAction extends AgaviAction
 	 * @author     Jean-Philippe Dery <jeanphilippe.dery@gmail.com>
 	 */
 	protected $defaultLanguage = '';
-	
+
 	/**
 	 * @var        string The current 2 letters code language.
 	 *
-	 * @since      0.1.0
 	 * @author     Jean-Philippe Dery <jeanphilippe.dery@gmail.com>
+	 * @since      0.1.0
 	 */
-	protected $currentLanguage = '';	
-	
+	protected $currentLanguage = '';
+
 	/**
 	 * Initialize this action.
 	 *
@@ -92,15 +92,15 @@ class AgaviPressAction extends AgaviAction
 	public function initialize(AgaviExecutionContainer $container)
 	{
 		parent::initialize($container);
-		
+
 		$this->user = $this->context->getUser();
 		$this->routing = $this->context->getRouting();
 		$this->request = $this->context->getRequest();
 		$this->translationManager = $this->context->getTranslationManager();
-						
+
 		// set the default and current language
 		$this->defaultLanguage = $this->translationManager->getDefaultLocale()->getLocaleLanguage();
-		$this->currentLanguage = $this->translationManager->getCurrentLocale()->getLocaleLanguage();		
+		$this->currentLanguage = $this->translationManager->getCurrentLocale()->getLocaleLanguage();
 	}
 }
 

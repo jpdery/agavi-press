@@ -34,55 +34,55 @@
 class AgaviPressView extends AgaviView
 {
 	const SLOT_LAYOUT_NAME = 'slot';
-		
+
 	/**
 	 * @var        AgaviPressRouting
 	 *
 	 * @since      0.1.0
-	 * @author     Jean-Philippe Dery <jeanphilippe.dery@gmail.com>	 
+	 * @author     Jean-Philippe Dery <jeanphilippe.dery@gmail.com>
 	 */
 	protected $routing = null;
-	
+
 	/**
 	 * @var        AgaviRequest
 	 *
+	 * @author     Jean-Philippe Dery <jeanphilippe.dery@gmail.com>
 	 * @since      0.1.0
-	 * @author     Jean-Philippe Dery <jeanphilippe.dery@gmail.com>	 
 	 */
 	protected $request = null;
-	
+
 	/**
 	 * @var        AgaviPressTranslationManager
 	 *
+	 * @author     Jean-Philippe Dery <jeanphilippe.dery@gmail.com>
 	 * @since      0.1.0
-	 * @author     Jean-Philippe Dery <jeanphilippe.dery@gmail.com>	 
 	 */
 	protected $translationManager = null;
-	
+
 	/**
 	 * @var        AgaviUser
 	 *
+	 * @author     Jean-Philippe Dery <jeanphilippe.dery@gmail.com>
 	 * @since      0.1.0
-	 * @author     Jean-Philippe Dery <jeanphilippe.dery@gmail.com>	 
 	 */
-	protected $user = null;	
-	
+	protected $user = null;
+
 	/**
 	 * @var        string The default 2 letters code language.
 	 *
-	 * @since      0.1.0
 	 * @author     Jean-Philippe Dery <jeanphilippe.dery@gmail.com>
+	 * @since      0.1.0
 	 */
 	protected $defaultLanguage = '';
-	
+
 	/**
 	 * @var        string The current 2 letters code language.
 	 *
-	 * @since      0.1.0
 	 * @author     Jean-Philippe Dery <jeanphilippe.dery@gmail.com>
+	 * @since      0.1.0
 	 */
-	protected $currentLanguage = '';	
-	
+	protected $currentLanguage = '';
+
 	/**
 	 * Initialize this view.
 	 *
@@ -94,17 +94,17 @@ class AgaviPressView extends AgaviView
 	public function initialize(AgaviExecutionContainer $container)
 	{
 		parent::initialize($container);
-		
+
 		$this->user = $this->context->getUser();
 		$this->routing = $this->context->getRouting();
 		$this->request = $this->context->getRequest();
 		$this->translationManager = $this->context->getTranslationManager();
-		
+
 		// set the default and current language
 		$this->defaultLanguage = $this->translationManager->getDefaultLocale()->getLocaleLanguage();
-		$this->currentLanguage = $this->translationManager->getCurrentLocale()->getLocaleLanguage();		
-	}	
-	
+		$this->currentLanguage = $this->translationManager->getCurrentLocale()->getLocaleLanguage();
+	}
+
 	/**
 	 * Handles output types that are not handled elsewhere in the view. The
 	 * default behavior is to simply throw an exception.
@@ -115,7 +115,7 @@ class AgaviPressView extends AgaviView
 	 * @throws     AgaviViewException if the output type is not handled.
 	 *
 	 * @author     Jean-Philippe Dery <jeanphilippe.dery@gmail.com>
-	 * @since      0.1.0	 
+	 * @since      0.1.0
 	 */
 	public final function execute(AgaviRequestDataHolder $rd)
 	{
@@ -138,7 +138,7 @@ class AgaviPressView extends AgaviView
 	 * @param      string The layout to load.
 	 *
 	 * @author     Jean-Philippe Dery <jeanphilippe.dery@gmail.com>
-	 * @since      0.1.0	 
+	 * @since      0.1.0
 	 */
 	public function setupHtml(AgaviRequestDataHolder $rd, $layoutName = null)
 	{
@@ -153,7 +153,7 @@ class AgaviPressView extends AgaviView
 		// you could use this, for instance, to automatically set a bunch of CSS or Javascript includes based on layout parameters -->
 		$this->loadLayout($layoutName);
 	}
-	
+
     /**
      * Create a slot inside a layer.
      *
@@ -163,7 +163,7 @@ class AgaviPressView extends AgaviView
      * @param      string The action used for the slot.
 	 *
 	 * @author     Jean-Philippe Dery <jeanphilippe.dery@gmail.com>
-	 * @since      0.1.0	
+	 * @since      0.1.0
 	 */
 	public function setSlot($layer, $slot, $module, $action, $arguments = null, $outputType = 'html', $method = 'read')
 	{
@@ -171,7 +171,7 @@ class AgaviPressView extends AgaviView
 		$l = $this->getLayer($layer);
 		$l->setSlot($slot, $s);
 	}
-		
+
     /**
      * Set pre-populated values inside a form. If no form id are specified, the
 	 * current form will be used.
@@ -193,13 +193,13 @@ class AgaviPressView extends AgaviView
 			if ($this->container->getRequestMethod() != $method) {
 				return false;
 			}
-		}	
-		
+		}
+
 		$this->request->setAttribute('populate', array($form => $parameters), 'org.agavi.filter.FormPopulationFilter');
-		
+
 		return true;
 	}
-	
+
     /**
      * Populate a form using all the values of an array.
      *
@@ -211,8 +211,8 @@ class AgaviPressView extends AgaviView
 	 *
 	 * @author     Jean-Philippe Dery <jeanphilippe.dery@gmail.com>
 	 * @since      0.1.0
-	 */	
-	protected function populateFormFields(array $fields, $form = null, $method = 'read') 
+	 */
+	protected function populateFormFields(array $fields, $form = null, $method = 'read')
 	{
 		if ($method) {
 			// prevent the form to be populated on a different request method
@@ -220,12 +220,12 @@ class AgaviPressView extends AgaviView
 				return false;
 			}
 		}
-		
+
 		$this->getFormPopulation($form)->setParameters($fields);
 
 		return true;
 	}
-	
+
     /**
      * Populate a single form field.
      *
@@ -238,7 +238,7 @@ class AgaviPressView extends AgaviView
 	 *
 	 * @author     Jean-Philippe Dery <jeanphilippe.dery@gmail.com>
 	 * @since      0.1.0
-	 */		
+	 */
 	protected function populateFormField($field, $value, $form = null, $method = 'read')
 	{
 		if ($method) {
@@ -250,7 +250,7 @@ class AgaviPressView extends AgaviView
 
 		$this->getFormPopulation($form)->setParameter($field, $value);
 
-		return true;		
+		return true;
 	}
 
 	/**
@@ -267,8 +267,8 @@ class AgaviPressView extends AgaviView
 	 */
 	protected function getFormPopulation($form = null)
 	{
-		$data = $this->request->getAttribute('populate', 'org.agavi.filter.FormPopulationFilter'); 
-	
+		$data = $this->request->getAttribute('populate', 'org.agavi.filter.FormPopulationFilter');
+
 		if ($form == null) {
 			$data = $data ? $data : new AgaviParameterHolder();
 		} else {
@@ -276,14 +276,14 @@ class AgaviPressView extends AgaviView
 				if (array_key_exists($form, $data) == false) $data[$form] = new AgaviParameterHolder();
 			} else {
 				$data = array($form => new AgaviParameterHolder());
-			}		
+			}
 		}
 
-		$this->request->setAttributeByRef('populate', $data, 'org.agavi.filter.FormPopulationFilter'); 
+		$this->request->setAttributeByRef('populate', $data, 'org.agavi.filter.FormPopulationFilter');
 
 		return $form ? $data[$form] : $data;
 	}
-	
+
     /**
      * Return the title.
      *
@@ -304,11 +304,11 @@ class AgaviPressView extends AgaviView
      *
 	 * @author     Jean-Philippe Dery <jeanphilippe.dery@gmail.com>
 	 * @since      0.1.0
-	 */	
+	 */
 	public function getDescription()
 	{
 		return '';
-	}	
+	}
 }
 
 ?>
