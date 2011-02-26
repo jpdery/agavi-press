@@ -25,11 +25,13 @@
 											<permission>page.manage</permission>
 											<permission>post.manage</permission>
 										</permissions>
-										<role name="administrator">
-											<permissions>
-												<permission>administration.manage</permission>
-											</permissions>
-										</role>
+										<roles>
+											<role name="administrator">
+												<permissions>
+													<permission>administration.manage</permission>
+												</permissions>
+											</role>
+										</roles>
 									</role>
 								</roles>
 							</role>
